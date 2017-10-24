@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inp" type="text" value="请输入内容">
+    <textarea name="" id="tta" cols="30" rows="10">我是textarea内容</textarea>
+    <select name="" id="sel">
+        <option>内容1</option>
+        
+    </select>
+    <script>
+        //输入框的内容，使用value属性进行操作
+
+    var inp = document.getElementById("inp");
+    inp.value = "修改后的内容";
+
+    var tta = document.getElementById("tta");
+    // tta.value = "我是value";
+    tta.innerHTML = "修改的新内容";
+    //teatarea使用value和innerHTML属性都是可以的，但是更加推荐value属性，书写具有统一性
+
+    var opt = document.getElementById("sel").getElementsByTagName("option");
+    opt.innerHTML = "我是innerHTML设置的内容";
+    opt.value = "我是value设置的内容";
+    </script>
+</body>
+</html>

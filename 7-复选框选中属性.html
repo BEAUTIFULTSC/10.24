@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <input id="ipt" type="checkbox">
+    <button id="btn1">选中</button>
+    <button id="btn2">取消选中</button>
+    <script>
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var ipt = document.getElementById("ipt");
+
+        btn1.onclick = function(){
+            ipt.checked = true;
+        }
+        btn2.onclick = function(){
+            ipt.checked = false;
+        }
+
+        // checked是复选框选中属性，true为选中，false取消选中
+
+    </script>
+</body>
+
+</html>

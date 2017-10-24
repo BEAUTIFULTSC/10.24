@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .wrap {
+      width: 300px;
+      margin: 100px auto 0;
+    }
+    
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 300px;
+    }
+    
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+    
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+    }
+    
+    td {
+      font: 14px "微软雅黑";
+    }
+    
+    tbody tr {
+      background-color: #f0f0f0;
+    }
+    
+    tbody tr:hover {
+      cursor: pointer;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <table>
+    <!--全选反选按钮所在行-->
+    <thead>
+    <tr>
+      <th>
+        <input type="checkbox" id="selectAll"/>
+      </th>
+      <th>菜名</th>
+      <th>饭店</th>
+    </tr>
+    </thead>
+    
+    <!--每一个菜的选项-->
+    <tbody id="cai">
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>红烧肉</td>
+      <td>田老师</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>西红柿鸡蛋</td>
+      <td>田老师</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>红烧狮子头</td>
+      <td>田老师</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>日式肥牛</td>
+      <td>田老师</td>
+    </tr>
+    
+    </tbody>
+  </table>
+</div>
+<script>
+  //效果1：操作顶部的复选框时，根据当前全选按钮的状态，选择是否选中下面的4个选项
+  
+  //1 获取元素
+  var selectAll = document.getElementById("selectAll");//全选按钮
+  var cbs = document.getElementById("cai").getElementsByTagName("input");//下面的4个选项
+  
+  //2 给全选按钮设置点击事件
+  selectAll.onclick = function () {
+    //根据当前全选按钮状态进行判断
+//    if(selectAll.checked == true){
+//      //设置下面的四个选项选中
+//      for(var i = 0;i<cbs.length;i++){
+//        cbs[i].checked = selectAll.checked;
+//      }
+//    }else{
+//      //设置下面的四个选项取消选中 
+//      for(var i = 0;i<cbs.length;i++){
+//        cbs[i].checked = selectAll.checked;
+//      }
+//    }
+    
+    //化简后的代码，将if和else中的代码进行了合并
+    for (var i = 0; i < cbs.length; i++) {
+      cbs[i].checked = selectAll.checked;
+    }
+  };
+  
+  //3 下面的四个选项操作：
+  
+  //只有下面的四个选项均选中，才能将selectAll按钮选中
+  
+  
+  //假设成立法的三个基本步骤：
+  //1 找到不确定的点，设置假设条件
+  //2 找到可以让假设失败的位置，设置失败的条件
+  //3 验证最终结果，设置操作。
+  
+  
+  //遍历cbs，给每个cbs中的标签设置事件
+  for (var i = 0; i < cbs.length; i++) {
+    cbs[i].onclick = function () {
+      //3.1 假设本次点击可以选中selectAll
+      var flag = true;
+      //每次点击后，都需要检测每个选项的状态
+      for (var i = 0; i < cbs.length; i++) {
+        //3.2 任意一个选项没有选中，设置flag为false
+        if (cbs[i].checked == false) {
+          flag = false;
+          break;//用于减少循环次数，可以不写
+        }
+      }
+      //3.3 对flag的值进行判断，执行对应操作
+      //if (flag) {
+      //  selectAll.checked = true;
+      //} else {
+      //  selectAll.checked = false;
+      //}
+      //化简后的代码:
+      selectAll.checked = flag;
+      
+    };
+  }
+
+  
+
+</script>
+</body>
+</html>

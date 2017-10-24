@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#" id="idA">页面跳转</a>
+    <script>
+        var idA = document.getElementById("idA");
+        idA.onclick = function(){
+            alert("弹出来了"); //回先执行一次弹出，再进行页面了跳转
+            //如果要取消a标签的默认跳转样式，可以添加 return false
+            return false;
+        }
+    </script>
+</body>
+</html>
